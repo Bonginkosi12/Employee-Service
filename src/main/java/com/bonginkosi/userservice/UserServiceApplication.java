@@ -1,13 +1,12 @@
-package com.SecondExample;
+package com.bonginkosi.userservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SecondPsqlApplication {
+public class UserServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SecondPsqlApplication.class, args);
+		SpringApplication.run(UserServiceApplication.class, args);
 	}
-
 }

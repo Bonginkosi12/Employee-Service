@@ -1,32 +1,50 @@
-// DTO(controls what the API exposes)
-// It does not directly exposes the entity(User)
+//This is the class that is tied to the database
+//
 
-package com.SecondExample.dto;
 
-public class UserDto {
+package com.bonginkosi.userservice.entity;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "users_id")
     private Integer id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "role")
     private String role;
+
+    @Column(name = "email")
     private String email;
-    private String mobileNumbers;
 
-    public UserDto(){}
-    public UserDto(String name, String role, String email, String mobileNumbers) {
+    @Column(name = "mobile_numbers")
+    private  String mobileNumbers;
+
+
+    // Constructors
+    public User() {}
+
+    public User(String name, String role,String email, String mobileNumbers) {
         this.name = name;
         this.role = role;
         this.email = email;
         this.mobileNumbers = mobileNumbers;
-
     }
 
-    public UserDto(Integer id, String name, String email, String role, String mobileNumbers) {
+    // Getters & Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
-        this.name = name;
-        this.role = role;
-        this.email = email;
-        this.mobileNumbers = mobileNumbers;
     }
-
 
     public String getName() {
         return name;
@@ -48,15 +66,16 @@ public class UserDto {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getMobileNumbers() {
         return mobileNumbers;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setMobileNumbers(String mobileNumbers) {
         this.mobileNumbers = mobileNumbers;
     }
+
 }

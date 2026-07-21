@@ -1,4 +1,4 @@
-package com.SecondExample;
+package com.bonginkosi.userservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

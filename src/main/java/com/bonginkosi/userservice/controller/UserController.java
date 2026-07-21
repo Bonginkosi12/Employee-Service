@@ -3,10 +3,10 @@
 //Returns JSON responses
 // Communicates with the Service layer
 
-package com.SecondExample.controller;
+package com.bonginkosi.userservice.controller;
 
-import com.SecondExample.dto.UserDto;
-import com.SecondExample.service.UserService;
+import com.bonginkosi.userservice.dto.UserDto;
+import com.bonginkosi.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

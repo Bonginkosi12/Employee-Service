@@ -3,11 +3,11 @@
 // Coordinates data from repositories
 // Communicates with the Repository layer
 
-package com.SecondExample.service;
+package com.bonginkosi.userservice.service;
 
-import com.SecondExample.dto.UserDto;
-import com.SecondExample.entity.User;
-import com.SecondExample.repository.UserRepository;
+import com.bonginkosi.userservice.dto.UserDto;
+import com.bonginkosi.userservice.entity.User;
+import com.bonginkosi.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
