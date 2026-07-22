@@ -23,9 +23,13 @@ public class UserService {
     public UserDto createUser(UserDto userDto) {
         User user = new User();
         user.setName(userDto.getName());
-        user.setRole(userDto.getRole());
+        user.setSurname(userDto.getSurname());
+        user.setAge(userDto.getAge());
         user.setEmail(userDto.getEmail());
         user.setMobileNumbers(userDto.getMobileNumbers());
+        user.setRole(userDto.getRole());
+        user.setEmploymentType(userDto.getEmploymentType());
+        user.setDepartment(userDto.getDepartment());
         userRepository.save(user);
 
         return userDto;
@@ -41,9 +45,13 @@ public class UserService {
 
         return new UserDto(
                 user.getName(),
-                user.getRole(),
+                user.getSurname(),
+                user.getAge(),
                 user.getEmail(),
-                user.getMobileNumbers()
+                user.getMobileNumbers(),
+                user.getRole(),
+                user.getEmploymentType(),
+                user.getDepartment()
         );
     }
 
@@ -53,9 +61,13 @@ public class UserService {
 
         return users.stream().map(user -> new UserDto(
                 user.getName(),
-                user.getRole(),
+                user.getSurname(),
+                user.getAge(),
                 user.getEmail(),
-                user.getMobileNumbers()
+                user.getMobileNumbers(),
+                user.getRole(),
+                user.getEmploymentType(),
+                user.getDepartment()
         )).toList();
     }
 
@@ -70,9 +82,13 @@ public class UserService {
 
         return new UserDto(
                 user.getName(),
-                user.getRole(),
+                user.getSurname(),
+                user.getAge(),
                 user.getEmail(),
-                user.getMobileNumbers()
+                user.getMobileNumbers(),
+                user.getRole(),
+                user.getEmploymentType(),
+                user.getDepartment()
         );
     }
 
@@ -94,9 +110,13 @@ public class UserService {
         return new UserDto(
                 user.getId(),
                 user.getName(),
+                user.getSurname(),
+                user.getAge(),
                 user.getEmail(),
+                user.getMobileNumbers(),
                 user.getRole(),
-                user.getMobileNumbers()
+                user.getEmploymentType(),
+                user.getDepartment()
         );
     }
 
@@ -116,9 +136,13 @@ public class UserService {
         return users.stream().map(user -> new UserDto(
                 user.getId(),
                 user.getName(),
-                user.getRole(),
+                user.getSurname(),
+                user.getAge(),
                 user.getEmail(),
-                user.getMobileNumbers()
+                user.getMobileNumbers(),
+                user.getRole(),
+                user.getEmploymentType(),
+                user.getDepartment()
         )).toList();
     }
 
@@ -137,10 +161,15 @@ public class UserService {
 
         return new UserDto(
                 user.getName(),
+                user.getSurname(),
+                user.getAge(),
                 user.getEmail(),
+                user.getMobileNumbers(),
                 user.getRole(),
-                user.getMobileNumbers()
+                user.getEmploymentType(),
+                user.getDepartment()
         );
+
 
     }
 }

@@ -6,25 +6,38 @@ package com.bonginkosi.userservice.dto;
 public class UserDto {
     private Integer id;
     private String name;
-    private String role;
+    private String surname;
+    private Integer age;
     private String email;
     private String mobileNumbers;
+    private String role;
+    private String employmentType;
+    private String department;
+
 
     public UserDto(){}
-    public UserDto(String name, String role, String email, String mobileNumbers) {
+    public UserDto(String name,String surname, Integer age,String email, String mobileNumbers,String role, String employmentType, String department) {
         this.name = name;
-        this.role = role;
+        this.surname = surname;
+        this.age = age;
         this.email = email;
         this.mobileNumbers = mobileNumbers;
-
+        this.role = role;
+        this.employmentType = employmentType;
+        this.department = department;
     }
 
-    public UserDto(Integer id, String name, String email, String role, String mobileNumbers) {
+    public UserDto(Integer id, String name,String surname,Integer age, String email,String mobileNumbers, String role,String employmentType,String department ) {
         this.id = id;
         this.name = name;
-        this.role = role;
+        this.surname = surname;
+        this.age = age;
         this.email = email;
         this.mobileNumbers = mobileNumbers;
+        this.role = role;
+        this.employmentType = employmentType;
+        this.department = department;
+
     }
 
 
@@ -36,18 +49,23 @@ public class UserDto {
         this.name = name;
     }
 
-    public String getRole() {
-        return role;
+    public String getSurname() {
+        return surname;
+    }
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -58,5 +76,29 @@ public class UserDto {
 
     public void setMobileNumbers(String mobileNumbers) {
         this.mobileNumbers = mobileNumbers;
+    }
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
+    public String getEmploymentType() {
+        return employmentType;
+    }
+    public void setEmploymentType(String employmentType) {
+        this.employmentType = employmentType;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }
