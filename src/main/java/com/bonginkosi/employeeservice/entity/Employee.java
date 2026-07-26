@@ -2,12 +2,12 @@
 //
 
 
-package com.bonginkosi.userservice.entity;
+package com.bonginkosi.employeeservice.entity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,9 +41,9 @@ public class User {
 
 
     // Constructors
-    public User() {}
+    public Employee() {}
 
-    public User(String name,String surname, Integer age,String email, String mobileNumbers,String role, String employmentType, String department) {
+    public Employee(String name, String surname, Integer age, String email, String mobileNumbers, String role, String employmentType, String department) {
         this.name = name;
         this.surname = surname;
         this.age = age;

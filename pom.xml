@@ -15,9 +15,9 @@
 
 
 	<groupId>com.bonginkosi</groupId>
-	<artifactId>user-service</artifactId>
+	<artifactId>employee-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>User-Service</name>
+	<name>Employee-Service</name>
 	<description>Spring Boot REST API for User Management</description>
 
 	<!-- Java Version -->

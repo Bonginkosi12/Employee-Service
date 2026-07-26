@@ -1,9 +1,9 @@
 // DTO(controls what the API exposes)
 // It does not directly exposes the entity(User)
 
-package com.bonginkosi.userservice.dto;
+package com.bonginkosi.employeeservice.dto;
 
-public class UserDto {
+public class EmployeeDto {
     private Integer id;
     private String name;
     private String surname;
@@ -15,8 +15,8 @@ public class UserDto {
     private String department;
 
 
-    public UserDto(){}
-    public UserDto(String name,String surname, Integer age,String email, String mobileNumbers,String role, String employmentType, String department) {
+    public EmployeeDto(){}
+    public EmployeeDto(String name, String surname, Integer age, String email, String mobileNumbers, String role, String employmentType, String department) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -27,7 +27,7 @@ public class UserDto {
         this.department = department;
     }
 
-    public UserDto(Integer id, String name,String surname,Integer age, String email,String mobileNumbers, String role,String employmentType,String department ) {
+    public EmployeeDto(Integer id, String name, String surname, Integer age, String email, String mobileNumbers, String role, String employmentType, String department ) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -100,5 +100,13 @@ public class UserDto {
     }
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
