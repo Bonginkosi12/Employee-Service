@@ -20,64 +20,64 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    // POST method to create new users
+    // POST method to create new employee
     @PostMapping
-    public EmployeeDto createUser(@RequestBody EmployeeDto userDto) {
-        return employeeService.createUser(userDto);
+    public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
+        return employeeService.createEmployee(employeeDto);
     }
 
     //GET method to get user by name
     @GetMapping("/name/{name}")
-    public EmployeeDto getUserByName(@PathVariable String name) {
-        return employeeService.getUserByName(name);
+    public EmployeeDto getEmployeeByName(@PathVariable String name) {
+        return employeeService.getEmployeeByName(name);
     }
 
     //GET method to get user by role
     @GetMapping("/role/{role}")
-    public List<EmployeeDto> getUsersByRole(@PathVariable String role) {
-        return employeeService.getUsersByRole(role);
+    public List<EmployeeDto> getEmployeeByRole(@PathVariable String role) {
+        return employeeService.getEmployeeByRole(role);
     }
 
 
-    // Use request params(find by email and mobile num)
+    // Using request params(find by email and mobile num)
     //These are key value pairs or extra details that the client sends to the server along with the HTTP method to control or get the desired response
     @GetMapping("/search")
-    public EmployeeDto getUserByEmailAndMobileNumber(@RequestParam String email, @RequestParam String mobileNumbers) {
+    public EmployeeDto getEmployeeByEmailAndMobileNumber(@RequestParam String email, @RequestParam String mobileNumbers) {
 
-        return employeeService.getUserByEmailAndMobileNumber(email, mobileNumbers);
+        return employeeService.getEmployeeByEmailAndMobileNumber(email, mobileNumbers);
     }
 
-    //A patch method to update user's email and mobileNumbers
+    //A patch method to update employee's email and mobileNumbers
     @PatchMapping("/{id}")
-    public EmployeeDto updateEmailAndMobile(@PathVariable Integer id, @RequestBody EmployeeDto userDto) {
+    public EmployeeDto updateEmailAndMobile(@PathVariable Integer id, @RequestBody EmployeeDto employeeDto) {
 
-        return employeeService.updateEmailAndMobile(id, userDto);
+        return employeeService.updateEmailAndMobile(id, employeeDto);
     }
 
     //Method to delete user by id
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
-        employeeService.deleteUserById(id);
+    public ResponseEntity<Void> deleteEmployee(@PathVariable Integer id) {
+        employeeService.deleteEmployeeById(id);
         return ResponseEntity.noContent().build();
     }
 
-    //A GET method list to return all users order by  name
+    //A GET method list to return all employees order by  name
     @GetMapping
-    public List<EmployeeDto> getAllUsersOrderedByName() {
-        return employeeService.getAllUsersOrderedByName();
+    public List<EmployeeDto> getAllEmployeesOrderedByName() {
+        return employeeService.getAllEmployeesOrderedByName();
     }
 
-     // PUT method to fully update user's information
+     // PUT method to fully update employee's information
     @PutMapping("/{id}")
-    public EmployeeDto updateUser(@PathVariable Integer id, @RequestBody EmployeeDto userDto) {
+    public EmployeeDto updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDto employeeDto) {
 
-        return employeeService.updateUser(id, userDto);
+        return employeeService.updateEmployee(id, employeeDto);
     }
 
    //Method to get user by id - OpenFeign calls this endpoint to verify if the user(employee)exist before creating a salary record/
     @GetMapping("/{id}")
-    public EmployeeDto getUserById(@PathVariable Integer id){
-        return employeeService.getUserById(id);
+    public EmployeeDto getEmployeeById(@PathVariable Integer id){
+        return employeeService.getEmployeeById(id);
     }
 
 }

@@ -19,24 +19,24 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
 
-    // Method to create a new user(resource)
-    public EmployeeDto createUser(EmployeeDto userDto) {
+    // Method to create a new employee(resource)
+    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
         Employee employee = new Employee();
-        employee.setName(userDto.getName());
-        employee.setSurname(userDto.getSurname());
-        employee.setAge(userDto.getAge());
-        employee.setEmail(userDto.getEmail());
-        employee.setMobileNumbers(userDto.getMobileNumbers());
-        employee.setRole(userDto.getRole());
-        employee.setEmploymentType(userDto.getEmploymentType());
-        employee.setDepartment(userDto.getDepartment());
+        employee.setName(employeeDto.getName());
+        employee.setSurname(employeeDto.getSurname());
+        employee.setAge(employeeDto.getAge());
+        employee.setEmail(employeeDto.getEmail());
+        employee.setMobileNumbers(employeeDto.getMobileNumbers());
+        employee.setRole(employeeDto.getRole());
+        employee.setEmploymentType(employeeDto.getEmploymentType());
+        employee.setDepartment(employeeDto.getDepartment());
         employeeRepository.save(employee);
 
-        return userDto;
+        return employeeDto;
     }
 
-    // Method to get user by name
-    public EmployeeDto getUserByName(String name) {
+    // Method to get employee by name
+    public EmployeeDto getEmployeeByName(String name) {
         Employee employee = employeeRepository.findByName(name);
 
         if (employee == null) {
@@ -55,8 +55,8 @@ public class EmployeeService {
         );
     }
 
-    // Method to get user byle
-    public List<EmployeeDto> getUsersByRole(String role) {
+    // Method to get employee by role
+    public List<EmployeeDto> getEmployeeByRole(String role) {
         List<Employee> employees = employeeRepository.findByRole(role);
 
         return employees.stream().map(employee -> new EmployeeDto(
@@ -72,8 +72,8 @@ public class EmployeeService {
     }
 
 
-    // Method using request params to find user by email and mobileNumbers
-    public EmployeeDto getUserByEmailAndMobileNumber(String email, String mobileNumbers) {
+    // Method using request params to find employee by email and mobileNumbers
+    public EmployeeDto getEmployeeByEmailAndMobileNumber(String email, String mobileNumbers) {
         Employee employee = employeeRepository.findByEmailAndMobileNumbers(email, mobileNumbers);
 
         if (employee == null) {
@@ -92,17 +92,17 @@ public class EmployeeService {
         );
     }
 
-    //A patch method to update user's email and mobileNumbers
-    public EmployeeDto updateEmailAndMobile(Integer id, EmployeeDto userDto) {
+    //A patch method to update employee's email and mobileNumbers
+    public EmployeeDto updateEmailAndMobile(Integer id, EmployeeDto employeeDto) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if (userDto.getEmail() != null) {
-            employee.setEmail(userDto.getEmail());
+        if (employeeDto.getEmail() != null) {
+            employee.setEmail(employeeDto.getEmail());
         }
 
-        if (userDto.getMobileNumbers() != null) {
-            employee.setMobileNumbers(userDto.getMobileNumbers());
+        if (employeeDto.getMobileNumbers() != null) {
+            employee.setMobileNumbers(employeeDto.getMobileNumbers());
         }
 
         employeeRepository.save(employee);
@@ -120,16 +120,16 @@ public class EmployeeService {
         );
     }
 
-    // Method to delete user
-    public void deleteUserById(Integer id) {
+    // Method to delete employee
+    public void deleteEmployeeById(Integer id) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         employeeRepository.delete(employee);
     }
 
-    //A GET method list to return all users order by  name
-    public List<EmployeeDto> getAllUsersOrderedByName() {
+    //A GET method list to return all employees order by  name
+    public List<EmployeeDto> getAllEmployeesOrderedByName() {
 
         List<Employee> employees = employeeRepository.findAllByOrderByNameAsc();
 
@@ -147,19 +147,20 @@ public class EmployeeService {
     }
 
     //A PUT method to fully update the user
-    public EmployeeDto updateUser(Integer id, EmployeeDto userDto) {
+    public EmployeeDto updateEmployee(Integer id, EmployeeDto employeeDto) {
 
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        employee.setName(userDto.getName());
-        employee.setSurname(userDto.getSurname());
-        employee.setAge(userDto.getAge());
-        employee.setEmail(userDto.getEmail());
-        employee.setMobileNumbers(userDto.getMobileNumbers());
-        employee.setRole(userDto.getRole());
-        employee.setEmploymentType(userDto.getEmploymentType());
-        employee.setDepartment(userDto.getDepartment());
+
+        employee.setName(employeeDto.getName());
+        employee.setSurname(employeeDto.getSurname());
+        employee.setAge(employeeDto.getAge());
+        employee.setEmail(employeeDto.getEmail());
+        employee.setMobileNumbers(employeeDto.getMobileNumbers());
+        employee.setRole(employeeDto.getRole());
+        employee.setEmploymentType(employeeDto.getEmploymentType());
+        employee.setDepartment(employeeDto.getDepartment());
         employeeRepository.save(employee);
 
         return new EmployeeDto(
@@ -172,12 +173,10 @@ public class EmployeeService {
                 employee.getEmploymentType(),
                 employee.getDepartment()
         );
-
-
     }
 
-    //Method to fetch the user from the database and convert it to a DTO
-    public EmployeeDto getUserById(Integer id) {
+    //Method to fetch the employee from the database and convert it to a DTO
+    public EmployeeDto getEmployeeById(Integer id) {
 
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
