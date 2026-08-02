@@ -108,7 +108,6 @@ public class EmployeeService {
         employeeRepository.save(employee);
 
         return new EmployeeDto(
-                employee.getId(),
                 employee.getName(),
                 employee.getSurname(),
                 employee.getAge(),
@@ -134,7 +133,6 @@ public class EmployeeService {
         List<Employee> employees = employeeRepository.findAllByOrderByNameAsc();
 
         return employees.stream().map(employee -> new EmployeeDto(
-                employee.getId(),
                 employee.getName(),
                 employee.getSurname(),
                 employee.getAge(),
@@ -146,7 +144,7 @@ public class EmployeeService {
         )).toList();
     }
 
-    //A PUT method to fully update the user
+    //A PUT method to fully update the employee
     public EmployeeDto updateEmployee(Integer id, EmployeeDto employeeDto) {
 
         Employee employee = employeeRepository.findById(id)

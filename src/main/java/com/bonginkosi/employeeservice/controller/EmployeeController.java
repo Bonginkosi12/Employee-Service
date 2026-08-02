@@ -26,13 +26,13 @@ public class EmployeeController {
         return employeeService.createEmployee(employeeDto);
     }
 
-    //GET method to get user by name
+    //GET method to get employee by name
     @GetMapping("/name/{name}")
     public EmployeeDto getEmployeeByName(@PathVariable String name) {
         return employeeService.getEmployeeByName(name);
     }
 
-    //GET method to get user by role
+    //GET method to get employee by role
     @GetMapping("/role/{role}")
     public List<EmployeeDto> getEmployeeByRole(@PathVariable String role) {
         return employeeService.getEmployeeByRole(role);
@@ -54,7 +54,7 @@ public class EmployeeController {
         return employeeService.updateEmailAndMobile(id, employeeDto);
     }
 
-    //Method to delete user by id
+    //Method to delete employee by id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Integer id) {
         employeeService.deleteEmployeeById(id);
@@ -74,7 +74,7 @@ public class EmployeeController {
         return employeeService.updateEmployee(id, employeeDto);
     }
 
-   //Method to get user by id - OpenFeign calls this endpoint to verify if the user(employee)exist before creating a salary record/
+   //Method to get employee by id - OpenFeign calls this endpoint to verify if the employee exist before creating a salary record/
     @GetMapping("/{id}")
     public EmployeeDto getEmployeeById(@PathVariable Integer id){
         return employeeService.getEmployeeById(id);
