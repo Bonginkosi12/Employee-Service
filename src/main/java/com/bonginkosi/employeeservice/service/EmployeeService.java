@@ -7,6 +7,8 @@ package com.bonginkosi.employeeservice.service;
 
 import com.bonginkosi.employeeservice.dto.EmployeeDto;
 import com.bonginkosi.employeeservice.entity.Employee;
+import com.bonginkosi.employeeservice.event.EmployeeCreatedEvent;
+import com.bonginkosi.employeeservice.producer.EmployeeEventProducer;
 import com.bonginkosi.employeeservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,13 @@ import java.util.List;
 @Service
 public class EmployeeService {
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
+    private final EmployeeEventProducer eventProducer;
 
+    public EmployeeService(EmployeeRepository employeeRepository, EmployeeEventProducer eventProducer) {
+        this.employeeRepository = employeeRepository;
+        this.eventProducer = eventProducer;
+    }
 
     // Method to create a new employee(resource)
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
@@ -31,6 +38,22 @@ public class EmployeeService {
         employee.setEmploymentType(employeeDto.getEmploymentType());
         employee.setDepartment(employeeDto.getDepartment());
         employeeRepository.save(employee);
+
+        //Event to communicate with other services
+        EmployeeCreatedEvent event = new EmployeeCreatedEvent(
+                employee.getId(),
+                employee.getName(),
+                employee.getSurname(),
+                employee.getAge(),
+                employee.getEmail(),
+                employee.getMobileNumbers(),
+                employee.getRole(),
+                employee.getEmploymentType(),
+                employee.getDepartment()
+        );
+
+        //Publish event to RabbitMQ
+        eventProducer.publishEmployeeCreated(event);
 
         return employeeDto;
     }
